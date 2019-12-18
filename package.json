@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/brandon-pereira/tv-tracker#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
     "menubar": "^7.1.0",

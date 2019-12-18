@@ -1,8 +1,13 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
-import TvShow from './components/TvShow';
+import Search from "./components/Search/Search";
+import TvShow from "./components/TvShow/TvShow";
 
-render(<div>
+render(
+  <div>
+    <Search />
     <TvShow title="Mr. Robot"></TvShow>
-</div>, document.querySelector('#app'));
+  </div>,
+  document.querySelector("#app")
+);
