@@ -1,0 +1,50 @@
+{
+  "name": "tv-tracker",
+  "version": "1.0.0",
+  "description": "An application for tracking your TV Shows. Runs in your menu bar.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron menubar.js",
+    "start:web": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandon-pereira/tv-tracker.git"
+  },
+  "author": "brandon-pereira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandon-pereira/tv-tracker/issues"
+  },
+  "homepage": "https://github.com/brandon-pereira/tv-tracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "menubar": "^7.1.0",
+    "node-fetch": "^2.6.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1",
+    "webtorrent": "^0.107.17",
+    "ws": "^7.2.0"
+  },
+  "build": {
+    "appId": "tv-tracker.branclon"
+  },
+  "devDependencies": {
+    "electron": "^7.1.5",
+    "electron-builder": "^21.2.0",
+    "nodemon": "^2.0.2",
+    "parcel-bundler": "^1.12.4"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".cache/*",
+      "dist/*",
+      "frontend/*"
+    ]
+  }
+}

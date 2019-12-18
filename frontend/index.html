@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+<body>
+    <div id="app"></div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
+
+<!-- 
+<script>
+    const progressBar = document.querySelector('progress');
+    // progressBar.value = 50;
+    console.log("HELLO WORLD");
+    // Create WebSocket connection.
+const socket = new WebSocket('ws://localhost:8000/api/download');
+
+// Connection opened
+socket.addEventListener('open', function (event) {
+    socket.send(JSON.stringify({ type: 'add-magnet-url', magnetUrl: "magnet:?xt=urn:btih:232dfed556bd0db107adf5d1fb15673b00281fab&dn=Mr.Robot.S04E10.iNTERNAL.480p.x264-mSD%5Beztv%5D.mkv%5Beztv%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A80&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969" }));
+});
+
+// Listen for messages
+socket.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+    const data = JSON.parse(event.data);
+    if(data.progress) {
+        progressBar.value = data.progress;
+    }
+});
+</script> -->
