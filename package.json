@@ -4,8 +4,9 @@
   "description": "An application for tracking your TV Shows. Runs in your menu bar.",
   "main": "index.js",
   "scripts": {
-    "start": "electron menubar.js",
+    "start": "electron index.js",
     "start:web": "nodemon server.js",
+    "build": "parcel build ./frontend/index.html --public-url .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
@@ -25,7 +26,6 @@
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
     "menubar": "^7.1.0",
-    "node-fetch": "^2.6.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^4.4.1",

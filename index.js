@@ -1,7 +1,8 @@
 const { menubar } = require('menubar');
 
 const mb = menubar({
-    index: `file://${process.cwd()}/frontend/index.html`
+  dir: `dist/`
+    // index: `file://${process.cwd()}/dist/index.html`
 });
 
 mb.on('ready', () => {
