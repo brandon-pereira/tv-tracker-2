@@ -6,7 +6,7 @@ import Loader from "../Loader/Loader";
 
 import SearchPrediction from "./SearchPrediction";
 
-function Search() {
+function Search({ onAddShow }) {
   const [value, setValue] = useState("");
   const { loading, error, data } = useSearchPredictions(value);
 
@@ -18,10 +18,12 @@ function Search() {
     setValue("");
   }, []);
 
-  const onSelect = useCallback((id) => () => {
-    console.log(id);
+  const onSelect = useCallback((result) => () => {
+    console.log(result.id);
+    onAddShow(result);
+    setValue("");
   }, []);
-  console.log(data);
+
   return (
     <Container onClick={onClose} isPredicting={isPredicting}>
       <Input
@@ -33,7 +35,7 @@ function Search() {
       <Predictions isPredicting={isPredicting}>
         {loading && <Loader color="#fff" />}
         {!loading &&
-          data.map(result => <SearchPrediction key={result.id} {...result} onSelect={onSelect(result.id)} />)}
+          data.map(result => <SearchPrediction key={result.id} {...result} onSelect={onSelect(result)} />)}
       </Predictions>
     </Container>
   );

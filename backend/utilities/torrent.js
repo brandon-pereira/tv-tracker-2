@@ -1,4 +1,5 @@
-module.exports = ({ torrent, ws }) => {
+module.exports = (magnetUrl, showId, { torrent, ws, send }) => {
+  const type = `torrent-${showId}`;
   torrent.add(
     magnetUrl,
     {
@@ -6,15 +7,15 @@ module.exports = ({ torrent, ws }) => {
     },
     torrent => {
       torrent.on("ready", () => {
-        ws.send(JSON.stringify({ magnetUrl, ready: true }));
+        send({ type, ready: true })
       });
 
       torrent.on("download", function(bytes) {
         console.log("total downloaded: " + torrent.downloaded);
         console.log("download speed: " + torrent.downloadSpeed);
         console.log("progress: " + torrent.progress);
-        ws.send(
-          JSON.stringify({ magnetUrl, progress: torrent.progress * 100 })
+        send(
+          { type, progress: torrent.progress * 100 }
         );
       });
 
@@ -25,10 +26,8 @@ module.exports = ({ torrent, ws }) => {
           return file.name.endsWith(".mkv");
         });
         console.log(file.path, torrent.path);
-        ws.send(
-          JSON.stringify({ magnetUrl, isCompleted: true, progress: 100 })
-        );
-        // process.exit(0);
+        send({ type, isCompleted: true, progress: 100 })
+        
       });
     }
   );
