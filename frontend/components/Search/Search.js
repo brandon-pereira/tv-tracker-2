@@ -1,60 +1,82 @@
 import React, { useState, useCallback, useEffect } from "react";
 
-import { Container, Input, BackgroundMask, Predictions } from "./Search.styles";
+import {
+  Container,
+  Input,
+  ShowDetails,
+  BackgroundMask,
+  Screen,
+  Predictions
+} from "./Search.styles";
 import useSearchPredictions from "../../hooks/useSearchPredictions";
 import Loader from "../Loader/Loader";
 
 import SearchPrediction from "./SearchPrediction";
 
-function Search({ isActive, onClose, onAddShow }) {
-  const [value, setValue] = useState("");
-  const { loading, error, data } = useSearchPredictions(value);
+function AddShowModal({ isOpen, onClose, onAddShow }) {
+  const [searchValue, setSearchValue] = useState("");
+  const [currentShow, setCurrentShow] = useState(null);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setValue("mr");
-  //   }, 1000);
-  // }, []);
-  const isPredicting = isActive;
+  const { loading, error, data } = useSearchPredictions(searchValue);
 
   const _onClose = useCallback(() => {
     onClose();
-    setValue("");
-  }, []);
+    setSearchValue("");
+    setCurrentShow(null);
+  }, [onClose]);
 
-  const onSelect = useCallback(
+  const onSelectShow = useCallback(
     result => () => {
       console.log(result.id);
-      onAddShow(result);
-      setValue("");
+
+      // onAddShow(result);
     },
     []
   );
 
+  const onShowDetails = useCallback(
+    result => () => {
+      console.log(result);
+      setSearchValue("");
+      setCurrentShow(result);
+    },
+    []
+  );
+
+  console.log({ isOpen, currentShow });
   return (
-    <Container onClick={_onClose} isPredicting={isPredicting}>
-      <Input
-        isPredicting={isPredicting}
-        value={value}
-        onClick={e => e.stopPropagation()}
-        onChange={e => {
-          setValue(e.target.value);
-        }}
-      />
-      <BackgroundMask />
-      <Predictions isPredicting={isPredicting}>
-        {loading && <Loader color="#fff" />}
-        {!loading &&
-          data.map(result => (
-            <SearchPrediction
-              key={result.id}
-              {...result}
-              onSelect={onSelect(result)}
-            />
-          ))}
-      </Predictions>
+    <Container isOpen={isOpen}>
+      <BackgroundMask onClick={_onClose} />
+      <Screen direction="ltr" visible={!currentShow}>
+        <Input
+          isActive={isOpen}
+          value={searchValue}
+          onChange={e => {
+            setSearchValue(e.target.value);
+          }}
+        />
+
+        <Predictions isPredicting={!currentShow}>
+          {loading && <Loader color="#fff" />}
+          {!loading &&
+            data.map(result => (
+              <SearchPrediction
+                key={result.id}
+                {...result}
+                onSelect={onShowDetails(result)}
+              />
+            ))}
+        </Predictions>
+      </Screen>
+      <Screen direction="rtl" visible={currentShow}>
+        {currentShow && (
+          <ShowDetails>
+            <h1>{currentShow.title}</h1>
+          </ShowDetails>
+        )}
+      </Screen>
     </Container>
   );
 }
 
-export default Search;
+export default AddShowModal;

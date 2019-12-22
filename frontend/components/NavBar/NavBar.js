@@ -6,6 +6,7 @@ import { Container, Logo, Button, SearchButton } from "./NavBar.styles";
 
 function NavBar({ onAddShow }) {
   const [isSearching, setSearching] = useState(false);
+  console.log(isSearching);
   return (
     <>
       <Container>
@@ -14,7 +15,7 @@ function NavBar({ onAddShow }) {
         <SearchButton onClick={() => setSearching(true)} />
       </Container>
       <Search
-        isActive={isSearching}
+        isOpen={isSearching}
         onClose={() => setSearching(false)}
         onAddShow={onAddShow}
       />

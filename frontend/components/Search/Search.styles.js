@@ -12,10 +12,11 @@ export const Container = styled.div`
   bottom: 0;
   overflow: hidden;
   visibility: hidden;
-  ${({ isPredicting }) =>
-    isPredicting &&
+  pointer-events: none;
+  ${({ isOpen }) =>
+    isOpen &&
     `
-
+  pointer-events: all;
     visibility: visible;
   `}
 `;
@@ -46,8 +47,9 @@ export const Input = styled.input`
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
   outline: none;
   align-self: flex-end;
-  ${({ isPredicting }) =>
-    isPredicting &&
+  padding: 0 1rem;
+  ${({ isActive }) =>
+    isActive &&
     `
     width: 100%;
     display: block;
@@ -55,6 +57,31 @@ export const Input = styled.input`
   &:focus {
     border: 1px solid blue;
   }
+`;
+
+export const Screen = styled.div`
+  margin: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  visibility: hidden;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  ${({ direction }) =>
+    direction === "ltr"
+      ? "transform: translateX(-100%);"
+      : "transform: translateX(100%);"}
+  ${({ visible }) =>
+    visible &&
+    `
+    transform: translateX(0);
+    visibility: visible;
+  `}
 `;
 
 export const Predictions = styled.div`
@@ -77,4 +104,12 @@ export const Prediction = styled.div`
     width: 82px;
     background: linear-gradient(#222, #000);
   }
+`;
+
+export const ShowDetails = styled.div`
+  background: #fff;
+  margin-top: 1.3rem;
+  border-radius: 10px;
+  overflow-y: scroll;
+  width: 100%;
 `;
