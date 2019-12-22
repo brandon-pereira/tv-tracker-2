@@ -1,34 +1,57 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
   box-sizing: border-box;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  visibility: hidden;
   ${({ isPredicting }) =>
     isPredicting &&
     `
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll;
-    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8));
+
+    visibility: visible;
   `}
 `;
 
+export const BackgroundMask = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  /* filter: blur(5px); */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+`;
+
 export const Input = styled.input`
-  position: relative;
-  z-index: 1;
-  border: 1px solid #888;
-  padding: 1rem 1.4rem;
-  width: 100%;
+  appearance: none;
+  background: #fff;
   border-radius: 50px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border: none;
+  flex-shrink: 0;
+  width: 50px;
+  float: right;
+  /* width: 100%; */
+  height: 50px;
+  transition: all 0.2s;
+  font: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
   outline: none;
-  font-family: inherit;
-  font-size: 1.2rem;
+  align-self: flex-end;
+  ${({ isPredicting }) =>
+    isPredicting &&
+    `
+    width: 100%;
+    display: block;
+  `}
   &:focus {
     border: 1px solid blue;
   }
@@ -37,7 +60,8 @@ export const Input = styled.input`
 export const Predictions = styled.div`
   margin-top: 1.3rem;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-y: scroll;
+  width: 100%;
 `;
 export const Prediction = styled.div`
   display: flex;
