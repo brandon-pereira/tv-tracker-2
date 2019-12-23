@@ -7,7 +7,7 @@ import {
   BackgroundMask,
   Screen,
   Predictions
-} from "./Search.styles";
+} from "./AddModal.styles";
 import useSearchPredictions from "../../hooks/useSearchPredictions";
 import Loader from "../Loader/Loader";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Search from "../Search/Search";
+import AddModal from "../AddModal/AddModal";
 
 import { Container, Logo, Button, SearchButton } from "./NavBar.styles";
 
@@ -14,7 +14,7 @@ function NavBar({ onAddShow }) {
         {/* <Button>Search</Button> */}
         <SearchButton onClick={() => setSearching(true)} />
       </Container>
-      <Search
+      <AddModal
         isOpen={isSearching}
         onClose={() => setSearching(false)}
         onAddShow={onAddShow}

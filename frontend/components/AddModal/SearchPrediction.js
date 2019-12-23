@@ -1,5 +1,5 @@
 import React from "react";
-import { Prediction } from "./Search.styles";
+import { Prediction } from "./AddModal.styles";
 
 function SearchPrediction({ id, image, title, onSelect }) {
   console.log(image);
