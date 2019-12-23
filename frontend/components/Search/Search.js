@@ -37,11 +37,14 @@ function AddShowModal({ isOpen, onClose, onAddShow }) {
   const onShowDetails = useCallback(
     result => () => {
       console.log(result);
-      setSearchValue("");
       setCurrentShow(result);
     },
     []
   );
+
+  const onBackToSearch = useCallback(() => {
+    setCurrentShow(null);
+  }, []);
 
   console.log({ isOpen, currentShow });
   return (
@@ -69,6 +72,7 @@ function AddShowModal({ isOpen, onClose, onAddShow }) {
         </Predictions>
       </Screen>
       <Screen direction="rtl" visible={currentShow}>
+        <div onClick={onBackToSearch}>Cancel</div>
         {currentShow && (
           <ShowDetails>
             <h1>{currentShow.title}</h1>

@@ -1,22 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
   visibility: hidden;
   pointer-events: none;
   ${({ isOpen }) =>
     isOpen &&
     `
-  pointer-events: all;
+    pointer-events: all;
     visibility: visible;
   `}
 `;
@@ -60,18 +56,17 @@ export const Input = styled.input`
 `;
 
 export const Screen = styled.div`
-  margin: 1rem;
+  padding: 1rem;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100%;
   flex-direction: column;
   display: flex;
   visibility: hidden;
   transform: translateX(-100%);
-  transition: all 0.3s;
+  transition: all 1s;
   ${({ direction }) =>
     direction === "ltr"
       ? "transform: translateX(-100%);"
@@ -108,8 +103,10 @@ export const Prediction = styled.div`
 
 export const ShowDetails = styled.div`
   background: #fff;
-  margin-top: 1.3rem;
   border-radius: 10px;
   overflow-y: scroll;
   width: 100%;
+  h1 {
+    margin: 0;
+  }
 `;
