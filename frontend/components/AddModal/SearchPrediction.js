@@ -11,6 +11,10 @@ function SearchPrediction({ id, image, title, onSelect }) {
       }}
     >
       {image && <img src={image.small || image.medium || image.original} />}
+      {/* show a transparent png so it just shows css bg */}
+      {!image && (
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=" />
+      )}
       {title}
     </Prediction>
   );
