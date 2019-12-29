@@ -20,7 +20,7 @@ const App = () => {
   const [shows, setShows] = useState(defaultShows); // TODO: Move to server
   const onAddShow = show => {
     setShows(shows => [...shows, show]);
-    // send({ type: "add-show", payload: show.id });
+    send({ type: "add-show", payload: show.id });
   };
 
   console.log(shows);

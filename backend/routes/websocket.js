@@ -28,14 +28,14 @@ module.exports = ({ app, torrent }) => {
   });
 };
 
-async function dispatchEvent(type, payload, { ws, send, torrent }) {
+async function dispatchEvent(type, payload, props) {
   if (!type) {
     console.warn("No type provided to websocket connection.");
     return;
   }
   switch (type) {
     case "add-show":
-      addShow(payload.showId);
+      addShow(payload, props);
       break;
     default:
       console.warn(`No handler for type "${type}" in websocket connection.`);
