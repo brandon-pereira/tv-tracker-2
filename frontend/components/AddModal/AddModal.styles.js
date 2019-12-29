@@ -9,9 +9,11 @@ export const Container = styled.div`
   overflow: hidden;
   visibility: hidden;
   pointer-events: none;
+  opacity: 0;
   ${({ isOpen }) =>
     isOpen &&
     `
+    opacity: 1;
     pointer-events: all;
     visibility: visible;
   `}
@@ -23,8 +25,7 @@ export const BackgroundMask = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
-  /* filter: blur(5px); */
+  z-index: 1;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
 `;
 
@@ -58,6 +59,7 @@ export const Input = styled.input`
 export const Screen = styled.div`
   padding: 1rem;
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
@@ -76,13 +78,14 @@ export const Screen = styled.div`
     `
     transform: translateX(0);
     visibility: visible;
+    opacity: 1;
   `}
 `;
 
 export const Predictions = styled.div`
   margin-top: 1.3rem;
   border-radius: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
 `;
 export const Prediction = styled.div`

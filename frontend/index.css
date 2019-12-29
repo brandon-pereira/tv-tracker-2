@@ -6,4 +6,5 @@ body {
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
   margin: 0;
+  background: linear-gradient(#fff, #ddd);
 }

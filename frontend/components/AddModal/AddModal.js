@@ -28,8 +28,8 @@ function AddShowModal({ isOpen, onClose, onAddShow }) {
   const onSelectShow = useCallback(
     result => () => {
       console.log(result.id);
-
-      // onAddShow(result);
+      onAddShow(result);
+      _onClose();
     },
     []
   );
@@ -71,11 +71,12 @@ function AddShowModal({ isOpen, onClose, onAddShow }) {
             ))}
         </Predictions>
       </Screen>
-      <Screen direction="rtl" visible={currentShow}>
+      <Screen direction="rtl" visible={Boolean(currentShow)}>
         <div onClick={onBackToSearch}>Cancel</div>
         {currentShow && (
           <ShowDetails>
             <h1>{currentShow.title}</h1>
+            <button onClick={onSelectShow(currentShow)}>Add from current episode</button>
           </ShowDetails>
         )}
       </Screen>
