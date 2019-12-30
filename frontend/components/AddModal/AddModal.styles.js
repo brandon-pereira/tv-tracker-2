@@ -95,12 +95,6 @@ export const Prediction = styled.div`
     width: 100%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
-    img {
-        margin-right: 1rem;
-        height: 120px;
-        width: 82px;
-        background: linear-gradient(#222, #000);
-    }
 `;
 
 export const ShowDetails = styled.div`

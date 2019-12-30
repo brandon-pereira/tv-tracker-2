@@ -1,22 +1,28 @@
 import React, { useState, useCallback, useEffect } from 'react';
 
-import {
-    Container,
-    Input,
-    ShowDetails,
-    BackgroundMask,
-    Screen,
-    Predictions
-} from './AddModal.styles';
+import { Container, Input, BackgroundMask, Screen, Predictions } from './AddModal.styles';
+
 import useSearchPredictions from '../../hooks/useSearchPredictions';
 import Loader from '../Loader/Loader';
+import ShowDetails from './ShowDetails';
 
 import SearchPrediction from './SearchPrediction';
 
 function AddShowModal({ isOpen, onClose, onAddShow }) {
-    const [searchValue, setSearchValue] = useState('');
+    const [searchValue, setSearchValue] = useState('mr');
 
-    const [currentShow, setCurrentShow] = useState(null);
+    const [currentShow, setCurrentShow] = useState({
+        id: 'tt4158110',
+        status: 'Ended',
+        title: 'Mr. Robot',
+        genres: ['Drama', 'Crime', 'Thriller'],
+        image: {
+            medium: 'http://static.tvmaze.com/uploads/images/medium_portrait/211/528026.jpg',
+            original: 'http://static.tvmaze.com/uploads/images/original_untouched/211/528026.jpg'
+        },
+        description:
+            '<p><b>Mr. Robot</b> follows Elliot, a young programmer who works as a cyber-security engineer by day and as a vigilante hacker by night. Elliot finds himself at a crossroads when the mysterious leader of an underground hacker group recruits him to destroy the firm he is paid to protect. Compelled by his personal beliefs, Elliot struggles to resist the chance to take down the multinational CEOs he believes are running (and ruining) the world.</p>'
+    });
 
     const { loading, error, data } = useSearchPredictions(searchValue);
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    background-color: #1e88e5;
+    background-color: #00796b;
     background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2));
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.2);
     display: flex;
