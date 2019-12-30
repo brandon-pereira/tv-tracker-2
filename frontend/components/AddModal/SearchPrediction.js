@@ -2,7 +2,6 @@ import React from "react";
 import { Prediction } from "./AddModal.styles";
 
 function SearchPrediction({ id, image, title, onSelect }) {
-  console.log(image);
   return (
     <Prediction
       onClick={e => {

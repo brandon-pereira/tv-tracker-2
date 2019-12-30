@@ -21,14 +21,20 @@ socket.addEventListener("message", event => {
     const data = JSON.parse(event.data);
     if (data && data.type && _subscribers[data.type]) {
       _subscribers[data.type].forEach(cb => cb(data));
-    } else if(data && data.type) {
-      console.warn(`Received event with type "${data.type}" but no subscribers found.`)
+    } else if (data && data.type) {
+      console.warn(
+        `Received event with type "${data.type}" but no subscribers found.`
+      );
     } else {
-      console.error(`Received invalid event`, event.data)
+      console.error(`Received invalid event`, event.data);
     }
   } catch (err) {
     console.error(err);
   }
+});
+
+subscribe("status", () => {
+  console.info("Connection established with server.");
 });
 
 export { send, subscribe };

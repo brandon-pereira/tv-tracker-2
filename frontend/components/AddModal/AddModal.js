@@ -3,7 +3,6 @@ import React, { useState, useCallback, useEffect } from "react";
 import {
   Container,
   Input,
-  ShowDetails,
   BackgroundMask,
   Screen,
   Predictions
@@ -11,6 +10,7 @@ import {
 import useSearchPredictions from "../../hooks/useSearchPredictions";
 import Loader from "../Loader/Loader";
 
+import ShowDetails from "./ShowDetails";
 import SearchPrediction from "./SearchPrediction";
 
 function AddShowModal({ isOpen, onClose, onAddShow }) {
@@ -73,11 +73,7 @@ function AddShowModal({ isOpen, onClose, onAddShow }) {
       </Screen>
       <Screen direction="rtl" visible={currentShow}>
         <div onClick={onBackToSearch}>Cancel</div>
-        {currentShow && (
-          <ShowDetails>
-            <h1>{currentShow.title}</h1>
-          </ShowDetails>
-        )}
+        {currentShow && <ShowDetails show={currentShow}></ShowDetails>}
       </Screen>
     </Container>
   );
