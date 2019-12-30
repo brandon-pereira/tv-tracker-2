@@ -6,6 +6,9 @@ export const Container = styled.div`
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
     padding: 1rem;
 `;
 

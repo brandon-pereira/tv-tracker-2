@@ -15,9 +15,8 @@ import SearchPrediction from './SearchPrediction';
 
 function AddShowModal({ isOpen, onClose, onAddShow }) {
     const [searchValue, setSearchValue] = useState('');
-    if (true) {
-        const [currentShow, setCurrentShow] = useState(null);
-    }
+
+    const [currentShow, setCurrentShow] = useState(null);
 
     const { loading, error, data } = useSearchPredictions(searchValue);
 
@@ -47,8 +46,6 @@ function AddShowModal({ isOpen, onClose, onAddShow }) {
     const onBackToSearch = useCallback(() => {
         setCurrentShow(null);
     }, []);
-
-    console.log({ isOpen, currentShow });
 
     return (
         <Container isOpen={isOpen}>

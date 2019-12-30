@@ -6,7 +6,6 @@ import { Container, Logo, Button, SearchButton } from './NavBar.styles';
 
 function NavBar({ onAddShow }) {
     const [isSearching, setSearching] = useState(false);
-    console.log(isSearching);
     return (
         <>
             <Container>

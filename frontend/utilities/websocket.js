@@ -12,7 +12,6 @@ function subscribe(type, callback) {
         _subscribers[type] = [];
     }
     _subscribers[type].push(callback);
-    console.log(_subscribers);
 }
 
 socket.addEventListener('message', event => {

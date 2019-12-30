@@ -4,8 +4,8 @@ export const Container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     visibility: hidden;
     pointer-events: none;
@@ -13,6 +13,7 @@ export const Container = styled.div`
     ${({ isOpen }) =>
         isOpen &&
         `
+    z-index: 10;
     opacity: 1;
     pointer-events: all;
     visibility: visible;
