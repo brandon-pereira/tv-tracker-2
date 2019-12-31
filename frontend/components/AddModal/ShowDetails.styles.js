@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
     background: #fff;
     padding: 2rem 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     box-sizing: border-box;
     overflow-y: scroll;
@@ -36,4 +39,20 @@ export const HeaderContent = styled.div`
     flex-direction: column;
     justify-content: center;
     flex: 1;
+`;
+
+export const Results = styled.div`
+    border: 1px solid #ccc;
+    flex: 1;
+    overflow-y: scroll;
+`;
+
+export const Result = styled.div`
+    padding: 0.3rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    &:nth-of-type(even) {
+        background: #f1f1f1;
+    }
 `;

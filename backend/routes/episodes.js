@@ -8,8 +8,9 @@ module.exports = app => {
         // Get show episodes from showId
         const data = await EZTV.getShowById(showId);
         // Parse results
-        if (!data) {
-            res.status(500).text('No results');
+        if (!data || !data.torrents) {
+            res.status(500).json({ message: 'No results' });
+            return;
         }
         let results = data.torrents;
         results = results.map(t => {

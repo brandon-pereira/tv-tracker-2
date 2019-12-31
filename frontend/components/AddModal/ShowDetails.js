@@ -1,8 +1,17 @@
 import React from 'react';
 
-import { Container, HeaderContent, Header, Genres, Genre } from './ShowDetails.styles';
+import {
+    Container,
+    HeaderContent,
+    Results,
+    Result,
+    Header,
+    Genres,
+    Genre
+} from './ShowDetails.styles';
 import SearchImage from './SearchImage';
 import useEpisodes from '../../hooks/useEpisodes';
+import Loader from '../Loader/Loader';
 
 function ShowDetails({ show }) {
     const { data, loading, error } = useEpisodes(show.id);
@@ -25,7 +34,11 @@ function ShowDetails({ show }) {
             <div>Start watching at episode:</div>
             <input type="checkbox" name="Next aired episode" />
             <input type="checkbox" name="This episode" />
-            <div>{data && data.map(e => <div key={e.id}>{e.title}</div>)}</div>
+            <Results>
+                {error && <div>ERROR {error}</div>}
+                {loading && <Loader />}
+                {data && data.map(e => <Result key={e.id}>{e.title}</Result>)}
+            </Results>
         </Container>
     );
 }

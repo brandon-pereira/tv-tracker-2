@@ -5,7 +5,7 @@ import AddModal from '../AddModal/AddModal';
 import { Container, Logo, Button, SearchButton } from './NavBar.styles';
 
 function NavBar({ onAddShow }) {
-    const [isSearching, setSearching] = useState(false);
+    const [isSearching, setSearching] = useState(true);
     return (
         <>
             <Container>
