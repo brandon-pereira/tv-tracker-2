@@ -1,6 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react';
 
-import { Container, Input, BackgroundMask, Screen, Predictions } from './AddModal.styles';
+import {
+    Container,
+    Input,
+    BackgroundMask,
+    BackButton,
+    Screen,
+    Predictions
+} from './AddModal.styles';
 
 import useSearchPredictions from '../../hooks/useSearchPredictions';
 import Loader from '../Loader/Loader';
@@ -9,7 +16,7 @@ import ShowDetails from './ShowDetails';
 import SearchPrediction from './SearchPrediction';
 
 function AddShowModal({ isOpen, onClose, onAddShow }) {
-    const [searchValue, setSearchValue] = useState('mr');
+    const [searchValue, setSearchValue] = useState('');
 
     const [currentShow, setCurrentShow] = useState({
         id: 'tt4158110',
@@ -78,7 +85,7 @@ function AddShowModal({ isOpen, onClose, onAddShow }) {
                 </Predictions>
             </Screen>
             <Screen direction="rtl" visible={currentShow}>
-                <div onClick={onBackToSearch}>Cancel</div>
+                <BackButton onClick={onBackToSearch}>Back</BackButton>
                 {currentShow && <ShowDetails show={currentShow}></ShowDetails>}
             </Screen>
         </Container>

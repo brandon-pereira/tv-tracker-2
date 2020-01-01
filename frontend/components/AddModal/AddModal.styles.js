@@ -106,3 +106,17 @@ export const ShowDetails = styled.div`
         margin: 0;
     }
 `;
+
+export const BackButton = styled.button`
+    color: #fff;
+    display: inline-block;
+    width: auto;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: transparent;
+    appearance: none;
+    border: none;
+    align-self: flex-start;
+    padding: 1rem;
+`;

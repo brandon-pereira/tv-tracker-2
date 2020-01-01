@@ -30,10 +30,15 @@ function ShowDetails({ show }) {
                 </HeaderContent>
             </Header>
             <div dangerouslySetInnerHTML={{ __html: show.description }} />
+            <div>
+                <div>Start watching at episode:</div>
 
-            <div>Start watching at episode:</div>
-            <input type="checkbox" name="Next aired episode" />
-            <input type="checkbox" name="This episode" />
+                <input type="radio" id="next" name="episode" />
+                <label for="next">Next aired episode</label>
+                <input type="radio" name="episode" id="specific" />
+                <label for="specific">Specific episode</label>
+            </div>
+
             <Results>
                 {error && <div>ERROR {error}</div>}
                 {loading && <Loader />}
